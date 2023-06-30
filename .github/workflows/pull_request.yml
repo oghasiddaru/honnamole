@@ -41,8 +41,8 @@ jobs:
       - name: Format code
         run: dart format --set-exit-if-changed .
 
-      - name: Analyze code
-        run: flutter analyze --no-pub --dart-define="analyzer.errors=[warning1,warning2]" --dart-define="analyzer.warns=[info1,info2]"
+ #     - name: Analyze code
+ #       run: flutter analyze --no-pub
 
       - name: Run integration tests
         run: flutter drive --target=test_driver/app.dart

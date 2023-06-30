@@ -36,7 +36,7 @@ jobs:
         run: flutter test
 
       - name: Run widget tests
-        run: flutter test test/widget_tests.dart
+        run: flutter test test/widget_test.dart
 
       - name: Format code
         run: dart format --set-exit-if-changed .

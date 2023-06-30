@@ -36,6 +36,6 @@ We deeply appreciate the contributions made by our users. As a token of our grat
 
 ### Get in Touch
 
-If you have any questions, suggestions, or need assistance, please feel free to reach out to us. You can contact us via email at templecompanion@example.com. We are excited to collaborate with you and create a remarkable temple experience for all visitors.
+If you have any questions, suggestions, or need assistance, please feel free to reach out to us. You can contact us via email at oghasiddaru@gmail.com. We are excited to collaborate with you and create a remarkable temple experience for all visitors.
 
 Thank you for being a part of the Temple Companion App community, and we look forward to your valuable contributions!

@@ -1,4 +1,4 @@
-## Temple Companion App
+## Flutter Android App for Temple
 
 Welcome to the Temple Companion App, a mobile application designed to enhance your temple experience. This app aims to provide a comprehensive platform that offers valuable features and services to all visitors. Whether you are a regular devotee or a first-time visitor, we invite you to be a part of our temple community and contribute to making this app truly exceptional.
 

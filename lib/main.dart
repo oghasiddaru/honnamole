@@ -5,6 +5,8 @@ void main() {
 }
 
 class SiddaruApp extends StatelessWidget {
+  const SiddaruApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,6 +20,8 @@ class SiddaruApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

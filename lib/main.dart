@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'upcoming_events.dart';
+import 'pooja_schedule.dart';
+import 'photo_gallery.dart';
 
 void main() {
   runApp(SiddaruApp());
 }
 
 class SiddaruApp extends StatelessWidget {
-  const SiddaruApp({super.key});
+  const SiddaruApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +22,27 @@ class SiddaruApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String _selectedLanguage = 'EN'; // Default language is English
+
+  List<String> _languages = [
+    'EN', // English
+    'KN', // Kannada
+    'MH', // Marathi
+  ];
+
+  void _changeLanguage(String language) {
+    setState(() {
+      _selectedLanguage = language;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +52,11 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Logo and App Name
             Container(
-              // Place your logo widget here
+              padding: EdgeInsets.all(16),
               child: Image.asset('assets/logo.png'),
             ),
             SizedBox(height: 16),
@@ -42,6 +65,18 @@ class HomePage extends StatelessWidget {
               'Welcome to Shri Siddeshwar Temple Mole!',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            SizedBox(height: 24),
+            // Language Selection Dropdown
+            DropdownButton<String>(
+              value: _selectedLanguage,
+              onChanged: (value) => _changeLanguage(value!),
+              items: _languages.map<DropdownMenuItem<String>>((String language) {
+                return DropdownMenuItem<String>(
+                  value: language,
+                  child: Text(language),
+                );
+              }).toList(),
+            ),
             SizedBox(height: 16),
             // Menu or Navigation Bar
             Row(
@@ -49,43 +84,65 @@ class HomePage extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Handle Events feature
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UpcomingEventsPage(),
+                      ),
+                    );
                   },
                   child: Text('Events'),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Handle Pooja feature
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PoojaSchedulePage(),
+                      ),
+                    );
                   },
                   child: Text('Pooja'),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Handle Donations feature
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PhotoGalleryPage(),
+                      ),
+                    );
                   },
-                  child: Text('Donations'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle History feature
-                  },
-                  child: Text('History'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle Daily Schedule feature
-                  },
-                  child: Text('Daily Schedule'),
+                  child: Text('Gallery'),
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 32),
             // Featured Content
             Container(
-              // Place your featured content widget here
-              child: Text('Featured Content'),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: Colors.blue.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    'Featured Content',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer convallis metus ac enim malesuada consectetur. In condimentum lectus eu ipsum interdum lobortis. Nulla vitae lectus eget dolor commodo pharetra. Nulla facilisi.',
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 32),
             // Quick Links
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -110,19 +167,19 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 32),
             // Image or Video Slideshow
             Container(
-              // Place your slideshow widget here
+              padding: EdgeInsets.all(16),
               child: Text('Image or Video Slideshow'),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 32),
             // Search Functionality
             Container(
-              // Place your search widget here
+              padding: EdgeInsets.all(16),
               child: Text('Search Functionality'),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 32),
             // Social Media Integration
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -147,17 +204,24 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 32),
             // Contact Information
             Column(
               children: [
-                Text('Contact Information:'),
+                Text(
+                  'Contact Information:',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
                 Text('Siddaru Temple, 123 Main St, City'),
                 Text('Phone: +1 123-456-7890'),
                 Text('Email: info@siddaru-temple.com'),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 32),
             // Footer
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

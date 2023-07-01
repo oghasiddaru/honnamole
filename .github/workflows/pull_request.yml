@@ -1,0 +1,57 @@
+name: PR checks
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: 3.10.5
+
+      - name: Set up Dart SDK
+        uses: dart-lang/setup-dart@v1
+        with:
+          dart-sdk: 3.0.5'
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Run unit tests
+        run: flutter test
+
+      - name: Run widget tests
+        run: flutter test test/widget_test.dart
+
+      - name: Format code
+        run: dart format --set-exit-if-changed .
+
+ #     - name: Analyze code
+ #       run: flutter analyze --no-pub
+
+ #     - name: Run integration tests
+ #       run: flutter drive --target=test_driver/app.dart
+
+      - name: Generate code coverage report
+        run: flutter test --coverage
+
+      - name: Upload code coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coverage/lcov.info

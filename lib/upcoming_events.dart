@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class UpcomingEventsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,8 @@ class UpcomingEventsPage extends StatelessWidget {
           EventCard(
             eventName: 'Festival of Lights',
             eventDate: 'October 15, 2023',
-            eventDescription: 'Join us for a grand celebration of lights and joy!',
+            eventDescription:
+                'Join us for a grand celebration of lights and joy!',
             eventImage: 'assets/images/festival_of_lights.jpg',
           ),
           // Add more EventCard widgets for other upcoming events

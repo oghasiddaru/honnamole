@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class PhotoGalleryPage extends StatelessWidget {
   final List<String> imagePaths = [
     'assets/images/photo1.jpg',

@@ -50,218 +50,223 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Ogha Siddeshwar Honna Mole'),
       ),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/background_image.png'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                Colors.white.withOpacity(0.7), // Increase the opacity here (0.5 for 50% opacity)
+                BlendMode.lighten, // Adjust the blend mode as per your preference
+                //BlendMode.
+              ),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Logo and App Name
+              Padding(
+                padding: EdgeInsets.all(16),
+                child: Image.asset('assets/logo.png'),
+              ),
+              SizedBox(height: 16),
+              // Welcome Message
+              Text(
+                'Welcome to Shri Siddeshwar Temple Mole!',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 24),
+              // Language Selection Dropdown
+              DropdownButton<String>(
+                value: _selectedLanguage,
+                onChanged: (value) => _changeLanguage(value!),
+                items: _languages.map((String language) {
+                  return DropdownMenuItem<String>(
+                    value: language,
+                    child: Text(language),
+                  );
+                }).toList(),
+              ),
+              SizedBox(height: 16),
+              // Menu or Navigation Bar
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Logo and App Name
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    child: Image.asset('assets/logo.png'),
-                  ),
-                  SizedBox(height: 16),
-                  // Welcome Message
-                  Text(
-                    'Welcome to Shri Siddeshwar Temple Mole!',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 24),
-                  // Language Selection Dropdown
-                  DropdownButton<String>(
-                    value: _selectedLanguage,
-                    onChanged: (value) => _changeLanguage(value!),
-                    items: _languages
-                        .map<DropdownMenuItem<String>>((String language) {
-                      return DropdownMenuItem<String>(
-                        value: language,
-                        child: Text(language),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UpcomingEventsPage(),
+                        ),
                       );
-                    }).toList(),
+                    },
+                    child: Text('Events'),
                   ),
-                  SizedBox(height: 16),
-                  // Menu or Navigation Bar
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => UpcomingEventsPage(),
-                            ),
-                          );
-                        },
-                        child: Text('Events'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PoojaSchedulePage(),
-                            ),
-                          );
-                        },
-                        child: Text('Pooja'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PhotoGalleryPage(),
-                            ),
-                          );
-                        },
-                        child: Text('Gallery'),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 32),
-                  // Featured Content
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Featured Content',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PoojaSchedulePage(),
                         ),
-                        SizedBox(height: 16),
-                        Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer convallis metus ac enim malesuada consectetur. In condimentum lectus eu ipsum interdum lobortis. Nulla vitae lectus eget dolor commodo pharetra. Nulla facilisi.',
-                          textAlign: TextAlign.center,
+                      );
+                    },
+                    child: Text('Pooja'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PhotoGalleryPage(),
                         ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 32),
-                  // Quick Links
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          // Handle Live Streaming feature
-                        },
-                        child: Text('Live Streaming'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Handle Daily Quotes feature
-                        },
-                        child: Text('Daily Quotes'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Handle Virtual Pooja feature
-                        },
-                        child: Text('Virtual Pooja'),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 32),
-                  // Image or Video Slideshow
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    child: Text('Image or Video Slideshow'),
-                  ),
-                  SizedBox(height: 32),
-                  // Search Functionality
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    child: Text('Search Functionality'),
-                  ),
-                  SizedBox(height: 32),
-                  // Social Media Integration
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          // Handle Facebook integration
-                        },
-                        icon: Icon(Icons.facebook),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          // Handle Instagram integration
-                        },
-                        icon: Icon(Icons.camera_alt),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          // Handle Twitter integration
-                        },
-                        icon: Icon(Icons.chat),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 32),
-                  // Contact Information
-                  Column(
-                    children: [
-                      Text(
-                        'Contact Information:',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      Text('Siddaru Temple, 123 Main St, City'),
-                      Text('Phone: +1 123-456-7890'),
-                      Text('Email: info@siddaru-temple.com'),
-                    ],
-                  ),
-                  SizedBox(height: 32),
-                  // Footer
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          // Handle About Us
-                        },
-                        child: Text('About Us'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          // Handle Terms of Service
-                        },
-                        child: Text('Terms of Service'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          // Handle Privacy Policy
-                        },
-                        child: Text('Privacy Policy'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          // Handle FAQs
-                        },
-                        child: Text('FAQs'),
-                      ),
-                    ],
+                      );
+                    },
+                    child: Text('Gallery'),
                   ),
                 ],
               ),
-            ),
-          );
-        },
+              SizedBox(height: 32),
+              // Featured Content
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      'Featured Content',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer convallis metus ac enim malesuada consectetur. In condimentum lectus eu ipsum interdum lobortis. Nulla vitae lectus eget dolor commodo pharetra. Nulla facilisi.',
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 32),
+              // Quick Links
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // Handle Live Streaming feature
+                    },
+                    child: Text('Live Streaming'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Handle Daily Quotes feature
+                    },
+                    child: Text('Daily Quotes'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Handle Virtual Pooja feature
+                    },
+                    child: Text('Virtual Pooja'),
+                  ),
+                ],
+              ),
+              SizedBox(height: 32),
+              // Image or Video Slideshow
+              Padding(
+                padding: EdgeInsets.all(16),
+                child: Text('Image or Video Slideshow'),
+              ),
+              SizedBox(height: 32),
+              // Search Functionality
+              Padding(
+                padding: EdgeInsets.all(16),
+                child: Text('Search Functionality'),
+              ),
+              SizedBox(height: 32),
+              // Social Media Integration
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      // Handle Facebook integration
+                    },
+                    icon: Icon(Icons.facebook),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // Handle Instagram integration
+                    },
+                    icon: Icon(Icons.camera_alt),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // Handle Twitter integration
+                    },
+                    icon: Icon(Icons.chat),
+                  ),
+                ],
+              ),
+              SizedBox(height: 32),
+              // Contact Information
+              Column(
+                children: [
+                  Text(
+                    'Contact Information:',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text('Siddaru Temple, 123 Main St, City'),
+                  Text('Phone: +1 123-456-7890'),
+                  Text('Email: info@siddaru-temple.com'),
+                ],
+              ),
+              SizedBox(height: 32),
+              // Footer
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      // Handle About Us
+                    },
+                    child: Text('About Us'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Handle Terms of Service
+                    },
+                    child: Text('Terms of Service'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Handle Privacy Policy
+                    },
+                    child: Text('Privacy Policy'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Handle FAQs
+                    },
+                    child: Text('FAQs'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

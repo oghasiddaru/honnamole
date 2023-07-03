@@ -74,8 +74,8 @@ class _HomePageState extends State<HomePage> {
                   DropdownButton<String>(
                     value: _selectedLanguage,
                     onChanged: (value) => _changeLanguage(value!),
-                    items:
-                    _languages.map<DropdownMenuItem<String>>((String language) {
+                    items: _languages
+                        .map<DropdownMenuItem<String>>((String language) {
                       return DropdownMenuItem<String>(
                         value: language,
                         child: Text(language),

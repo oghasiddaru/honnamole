@@ -19,7 +19,8 @@ class PhotoGalleryPage extends StatelessWidget {
                 return GridView.builder(
                   padding: EdgeInsets.all(16.0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: _calculateCrossAxisCount(constraints.maxWidth),
+                    crossAxisCount:
+                        _calculateCrossAxisCount(constraints.maxWidth),
                     crossAxisSpacing: 8.0,
                     mainAxisSpacing: 8.0,
                   ),
@@ -54,12 +55,16 @@ class PhotoGalleryPage extends StatelessWidget {
   }
 
   Future<List<String>> _loadImageAssets(BuildContext context) async {
-    final manifestContent = await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
+    final manifestContent =
+        await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
     final manifestMap = Map<String, dynamic>.from(json.decode(manifestContent));
 
     final imagePaths = manifestMap.keys
         .where((String key) => key.startsWith('assets/images/'))
-        .where((String key) => key.endsWith('.jpg') || key.endsWith('.jpeg') || key.endsWith('.png'))
+        .where((String key) =>
+            key.endsWith('.jpg') ||
+            key.endsWith('.jpeg') ||
+            key.endsWith('.png'))
         .toList();
 
     return imagePaths;
@@ -75,7 +80,8 @@ class PhotoGalleryPage extends StatelessWidget {
     }
   }
 
-  void _navigateToImageDetail(BuildContext context, List<String> imagePaths, int currentIndex) {
+  void _navigateToImageDetail(
+      BuildContext context, List<String> imagePaths, int currentIndex) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -152,16 +158,16 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                   icon: Icon(Icons.arrow_back),
                   onPressed: _currentPageIndex > 0
                       ? () {
-                    _navigateToPreviousImage();
-                  }
+                          _navigateToPreviousImage();
+                        }
                       : null,
                 ),
                 IconButton(
                   icon: Icon(Icons.arrow_forward),
                   onPressed: _currentPageIndex < widget.imagePaths.length - 1
                       ? () {
-                    _navigateToNextImage();
-                  }
+                          _navigateToNextImage();
+                        }
                       : null,
                 ),
               ],
@@ -173,10 +179,12 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
   }
 
   void _navigateToPreviousImage() {
-    _pageController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+    _pageController.previousPage(
+        duration: Duration(milliseconds: 300), curve: Curves.ease);
   }
 
   void _navigateToNextImage() {
-    _pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+    _pageController.nextPage(
+        duration: Duration(milliseconds: 300), curve: Curves.ease);
   }
 }

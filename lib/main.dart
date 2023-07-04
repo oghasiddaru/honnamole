@@ -110,12 +110,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               child: Wrap(
                 alignment: WrapAlignment.spaceEvenly,
                 children: [
-                  _buildIconButton('Events', Icons.event),
-                  _buildIconButton('Pooja', Icons.wb_sunny),
-                  _buildIconButton('Gallery', Icons.photo_library),
-                  _buildIconButton('Live Streaming', Icons.live_tv),
-                  _buildIconButton('Daily Quotes', Icons.format_quote),
-                  _buildIconButton('Virtual Pooja', Icons.lightbulb),
+                  _buildIconButton('Events', 'assets/events.png'),
+                  _buildIconButton('Pooja', 'assets/pooja.png'),
+                  _buildIconButton('Gallery', 'assets/gallery.png'),
+                  _buildIconButton('Live Streaming', 'assets/live_stream.png'),
+                  _buildIconButton('Daily Quotes', 'assets/quotes.png'),
+                  _buildIconButton('Virtual Pooja', 'assets/virtual_pooja.png'),
                 ],
               ),
             ),
@@ -125,29 +125,25 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
-  Widget _buildIconButton(String label, IconData icon) {
-    return Container(
-      width: 100,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          IconButton(
-            onPressed: () {
-              // Handle button press here
-            },
-            icon: Icon(
-              icon,
-              color: Colors.white,
-            ),
+  Widget _buildIconButton(String label, String iconPath) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        IconButton(
+          onPressed: () {
+            // Handle button press here
+          },
+          icon: Image.asset(
+            iconPath,
+            color: Colors.white,
           ),
-          SizedBox(height: 4.0),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white),
-          ),
-        ],
-      ),
+        ),
+        SizedBox(height: 4.0),
+        Text(
+          label,
+          style: TextStyle(color: Colors.white),
+        ),
+      ],
     );
   }
 

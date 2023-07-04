@@ -74,6 +74,12 @@ flutter:
     - assets/image2.jpg
     - assets/image3.jpg
     - assets/images/
+    - assets/events.png
+    - assets/pooja.png
+    - assets/gallery.png
+    - assets/live_stream.png
+    - assets/quotes.png
+    - assets/virtual_pooja.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -29,9 +29,11 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cached_network_image: ^3.0.0
   flutter:
     sdk: flutter
   provider: ^5.0.0
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -67,7 +69,17 @@ flutter:
   assets:
     - assets/logo.png
     - assets/background_image.png
+    - assets/cover_photo.png
+    - assets/image1.jpg
+    - assets/image2.jpg
+    - assets/image3.jpg
     - assets/images/
+    - assets/events.png
+    - assets/pooja.png
+    - assets/gallery.png
+    - assets/live_stream.png
+    - assets/quotes.png
+    - assets/virtual_pooja.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

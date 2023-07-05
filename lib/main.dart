@@ -12,7 +12,7 @@ class SiddaruApp extends StatelessWidget {
     return MaterialApp(
       title: 'Siddaru',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: HomePage(),
     );
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ogha Siddeshwar Honna Mole'),
+        title: Text('ಓಘ ಸಿದ್ಧೇಶ್ವರ ದೇವಸ್ಥಾನ ಮೋಳೆ', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white)),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -89,33 +89,36 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     'ಓಘಸಿದ್ದೇಶ್ವರ ದೇವಸ್ಥಾನ ಮೋಳೆ',
-                    style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.red),
+                    style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.black87),
                   ),
                 ),
               ),
             ),
             Container(
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(12.0),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.0),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.0),
+                  topRight: Radius.circular(10.0),
+                ),
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.green.shade100,
-                    Colors.green.shade900,
+                    Colors.white,
+                    Colors.amber,
                   ],
                 ),
               ),
-              child: Wrap(
-                alignment: WrapAlignment.spaceEvenly,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildIconButton('Events', 'assets/events.png'),
-                  _buildIconButton('Pooja', 'assets/pooja.png'),
-                  _buildIconButton('Gallery', 'assets/gallery.png'),
-                  _buildIconButton('Live Streaming', 'assets/live_stream.png'),
-                  _buildIconButton('Daily Quotes', 'assets/quotes.png'),
-                  _buildIconButton('Virtual Pooja', 'assets/virtual_pooja.png'),
+                  _buildColumnIcon('Events', 'assets/events.png'),
+                  _buildColumnIcon('Pooja', 'assets/pooja.png'),
+                  _buildColumnIcon('Gallery', 'assets/gallery.png'),
+                  _buildColumnIcon('Live Streaming', 'assets/live_stream.png'),
+                  _buildColumnIcon('Daily Quotes', 'assets/quotes.png'),
+                  _buildColumnIcon('Virtual Pooja', 'assets/virtual_pooja.png'),
                 ],
               ),
             ),
@@ -125,27 +128,17 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
-  Widget _buildIconButton(String label, String iconPath) {
+  Widget _buildColumnIcon(String title, String imagePath) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
-          onPressed: () {
-            // Handle button press here
-          },
-          icon: Image.asset(
-            iconPath,
-            color: Colors.white,
-          ),
-        ),
-        SizedBox(height: 4.0),
-        Text(
-          label,
-          style: TextStyle(color: Colors.white),
-        ),
+        Icon(Icons.image),
+        SizedBox(height: 8.0),
+        Text(title),
       ],
     );
   }
+
+
 
   Widget _buildCircularImageWithLabel(String imagePath, String label) {
     return Column(

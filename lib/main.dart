@@ -113,12 +113,24 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildColumnIcon('Events', 'assets/events.png'),
-                  _buildColumnIcon('Pooja', 'assets/pooja.png'),
-                  _buildColumnIcon('Gallery', 'assets/gallery.png'),
-                  _buildColumnIcon('Live Streaming', 'assets/live_stream.png'),
-                  _buildColumnIcon('Daily Quotes', 'assets/quotes.png'),
-                  _buildColumnIcon('Virtual Pooja', 'assets/virtual_pooja.png'),
+                  Container(
+                    child: _buildColumnIcon('Events', 'assets/events.png'),
+                  ),
+                  Container(
+                    child: _buildColumnIcon('Pooja', 'assets/pooja.png'),
+                  ),
+                  Container(
+                    child: _buildColumnIcon('Gallery', 'assets/gallery.png'),
+                  ),
+                  Container(
+                    child: _buildColumnIcon('Live Streaming', 'assets/live_stream.png'),
+                  ),
+                  Container(
+                    child: _buildColumnIcon('Daily Quotes', 'assets/quotes.png'),
+                  ),
+                  Container(
+                    child: _buildColumnIcon('Virtual Pooja', 'assets/virtual_pooja.png'),
+                  ),
                 ],
               ),
             ),
@@ -128,16 +140,28 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
-  Widget _buildColumnIcon(String title, String imagePath) {
+  Widget _buildColumnIcon(String label, String iconPath) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(Icons.image),
-        SizedBox(height: 8.0),
-        Text(title),
+        IconButton(
+          onPressed: () {
+            // Handle button press here
+          },
+          icon: Image.asset(
+            iconPath,
+            color: Colors.black,
+          ),
+        ),
+        SizedBox(height: 10.0),
+        Text(
+          label,
+          style: TextStyle(color: Colors.black),
+          textAlign: TextAlign.center,
+        ),
       ],
     );
   }
-
 
 
   Widget _buildCircularImageWithLabel(String imagePath, String label) {
@@ -154,10 +178,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ),
           ),
         ),
-        SizedBox(height: 8.0),
+        SizedBox(height: 10.0),
         Text(
           label,
-          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.deepPurple),
+          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ],
     );
